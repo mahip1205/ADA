@@ -1,0 +1,124 @@
+#include <iostream>
+#include <array>
+#include<cmath>
+using namespace std;
+
+int knapsack_algorithm(int arr[10][2])
+{
+    cout << "Enter the profit and weight for 10 items:";
+    for (int i = 0; i < 10; i++)
+    {
+        cin >> arr[i][0] >> arr[i][1];
+    }
+    int capacity = 30;
+    int count = 0;
+    int n = 10;
+    // sorting array by profit
+    int sorted_array_profit[10][2];
+    for (int i = 0; i < n - 1; i++)
+    {
+        int max_value = i;
+        for (int j = i + 1; j < n; j++)
+        {
+
+            int arr1 = arr[j][0] / arr[j][1];
+            int arr2 = arr[max_value][0] / arr[max_value][1];
+            if (arr1 > arr2)
+            {
+                max_value = j;
+            }
+        }
+
+        swap(arr[i][0], arr[max_value][0]);
+        swap(arr[i][1], arr[max_value][1]);
+    }
+    int i = 10;
+    int j = 2;
+    int items[10][2] = {0};
+
+    for (int i = 0; i <= arr[i][0]; i++)
+    {
+        for (int j = 0; j <= arr[0][j]; j++)
+        {
+            if (arr[i][j] > capacity)
+            {
+                break;
+            }
+            else if (arr[i][j] == 0)
+            {
+                break;
+            }
+            else
+            {
+                items[count][0] = arr[i][0];
+                items[count][1] = arr[i][1];
+                capacity = arr[i][1];
+                capacity--;
+                count++;
+            }
+        }
+
+        // //sorting by weight
+        // int sorted_array_weight[10][2];
+        // for (int i = 0; i < n - 1; i++)
+        // {
+        //     int max_value = j;
+        //     for (int j = i + 1; j < n; j++)
+        //     {
+
+        //         int arr1 = arr[j][0] / arr[j][1];
+        //         int arr2 = arr[max_value][0] / arr[max_value][1];
+        //         if (arr1 > arr2)
+        //         {
+        //             max_value = i;
+        //         }
+        //     }
+
+        //     swap(arr[i][0], arr[max_value][0]);
+        //     swap(arr[i][1], arr[max_value][1]);
+        // }
+        // for (int i = 0; i <= arr[i][0]; i++)
+        // {
+        //     for (int j = 0; j <= arr[0][j]; j++)
+        //     {
+        //         if (arr[i][j] > capacity)
+        //         {
+        //             break;
+        //         }
+        //         else if (arr[i][j] == 0)
+        //         {
+        //             break;
+        //         }
+        //         else
+        //         {
+        //             items[count][0] = arr[i][0];
+        //             items[count][1] = arr[i][1];
+        //             capacity = arr[i][1];
+        //             capacity--;
+        //             count++;
+        //         }
+        //     }
+
+        // for(int i=0;i<=items[i][0];i++){
+        //     for(j=0;j<=items[count][j];j++){
+        //         cout<<output[i][j]<<endl;
+        //     }
+        // }
+        cout << items[count][0];
+        cout << items[count][1];
+
+        // }
+        return **items;
+    }
+}
+void print_array(){
+
+}
+
+int main()
+{
+    int arr[10][2];
+    int val = knapsack_algorithm(arr);
+
+    return 0;
+}
