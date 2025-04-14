@@ -1,0 +1,90 @@
+#include <iostream>
+using namespace std;
+
+void print_matrix(int arr[4][4])
+{
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            cout << arr[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+void matrix_addition(int arr1[4][4], int arr2[4][4], int result[4][4])
+{
+}
+void matrix_multi(int n, int arr1[4][4], int arr2[4][4], int result[4][4])
+{
+    if (n == 1)
+    {
+        result[0][0] = arr1[0][0] * arr2[0][0];
+        return;
+    }
+    else
+    {
+        int n;
+        cout << "Enter the value of n" << endl;
+        cin >> n;
+        int mid = n / 2;
+        int A11[2][2], A12[2][2], A21[2][2], A22[2][2];
+        int B11[2][2], B12[2][2], B21[2][2], B22[2][2];
+        int R11[2][2] = {}, R12[2][2] = {}, R21[2][2] = {}, R22[2][2] = {};
+        int temp1[2][2], temp2[2][2];
+        int temp_result;
+
+        for (int i = 0; i < mid; i++)
+        {
+            for (int j = 0; j < mid; j++)
+            {
+                A11[i][j] = arr1[i][j];
+                A12[i][j] = arr1[i][j + mid];
+                A21[i][j] = arr1[i + mid][j];
+                A22[i][j] = arr1[i + mid][j + mid];
+
+                B11[i][j] = arr2[i][j];
+                B12[i][j] = arr2[i][j + mid];
+                B21[i][j] = arr2[i + mid][j];
+                B22[i][j] = arr2[i + mid][j + mid];
+            }
+        }
+        for(int i=0;i<n;i++){
+            
+
+
+        }
+        
+    }
+}
+
+int main()
+{
+    int arr1[4][4], arr2[4][4];
+
+    cout << "Enter the elements of matrix1 " << endl;
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            cin >> arr1[i][j];
+        }
+    }
+
+    cout << "Enter the elements of matrix2 " << endl;
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            cin >> arr2[i][j];
+        }
+    }
+
+    cout << "\nMatrix 1:" << endl;
+    print_matrix(arr1);
+
+    cout << "\nMatrix 2:" << endl;
+    print_matrix(arr2);
+
+    return 0;
+}
